@@ -1,4 +1,5 @@
-using System.Collections.Concurrent;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,12 @@ string policyName = "SomeNamePolicy";
 // builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 
+// Microsoft.EntityFrameworkCore.DbContextOptionsBuilder;
 builder.Services.AddScoped<IBlogService, BlogService>();
-builder.Services.AddSingleton<IBlogRepository, MemoryRepository>();
+builder.Services.AddScoped<IBlogRepository, EntityRepository>();
+builder.Services.AddDbContext<BloggingContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("BloggingContext")));
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors((options) =>
@@ -34,8 +39,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(policyName);
-
 app.UseHttpsRedirection();
+
 app.ConfigureData();
+
 app.MapControllers();
 app.Run();
