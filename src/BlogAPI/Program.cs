@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 var builder = WebApplication.CreateBuilder(args);
 
 string policyName = "SomeNamePolicy";
@@ -6,6 +8,10 @@ string policyName = "SomeNamePolicy";
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 // builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddSingleton<IBlogRepository, MemoryRepository>();
+
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors((options) =>
 {
@@ -30,6 +36,6 @@ if (app.Environment.IsDevelopment())
 app.UseCors(policyName);
 
 app.UseHttpsRedirection();
-
+app.ConfigureData();
 app.MapControllers();
 app.Run();
