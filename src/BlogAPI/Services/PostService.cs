@@ -10,8 +10,13 @@ public class PostService : IPostService
         _blogRepository = blogRepository;
     }
 
-    public IEnumerable<Post> GetPosts()
-    {
-        return _blogRepository.GetAllPosts();
-    }
+    public void AddPost(Post post) => _blogRepository.Create(post);
+
+    public void DeletePost(int id) => _blogRepository.Delete(id);
+
+    public Post GetPost(int id) => _blogRepository.GetById(id);
+
+    public IEnumerable<Post> GetPosts() => _blogRepository.GetAllPosts();
+
+    public void UpdatePost(Post post) => _blogRepository.Update(post);
 }

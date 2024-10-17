@@ -43,7 +43,7 @@ namespace BlogAPI.Migrations
 
                     b.HasKey("PostId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Posts");
                 });
 #pragma warning restore 612, 618
         }

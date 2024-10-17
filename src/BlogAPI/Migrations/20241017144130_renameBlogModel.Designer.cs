@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BlogAPI.Migrations
 {
     [DbContext(typeof(BloggingContext))]
-    [Migration("20241017121208_renameBlogModel")]
+    [Migration("20241017144130_renameBlogModel")]
     partial class renameBlogModel
     {
         /// <inheritdoc />
@@ -46,7 +46,7 @@ namespace BlogAPI.Migrations
 
                     b.HasKey("PostId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Posts");
                 });
 #pragma warning restore 612, 618
         }
