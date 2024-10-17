@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BlogAPI.Migrations
 {
     [DbContext(typeof(BloggingContext))]
-    [Migration("20241016171000_initial")]
-    partial class initial
+    [Migration("20241017121208_renameBlogModel")]
+    partial class renameBlogModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,13 +25,13 @@ namespace BlogAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Blog", b =>
+            modelBuilder.Entity("Post", b =>
                 {
-                    b.Property<int>("BlogId")
+                    b.Property<int>("PostId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("BlogId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PostId"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -44,7 +44,7 @@ namespace BlogAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("BlogId");
+                    b.HasKey("PostId");
 
                     b.ToTable("Blogs");
                 });

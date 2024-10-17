@@ -1,3 +1,4 @@
+namespace BlogAPI.Data;
 
 public class EntityRepository : IBlogRepository
 {
@@ -7,8 +8,8 @@ public class EntityRepository : IBlogRepository
         _context = context;
     }
 
-    public IEnumerable<Blog> GetAllBlogs()
+    public IEnumerable<Post> GetAllPosts()
     {
-        return _context.Blogs.ToList();
+        return _context.Posts.ToList();
     }
 }

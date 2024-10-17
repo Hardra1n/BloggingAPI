@@ -1,5 +1,6 @@
+using BlogAPI.Data;
+using BlogAPI.Services;
 using Microsoft.EntityFrameworkCore;
-using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ string policyName = "SomeNamePolicy";
 builder.Services.AddControllers();
 
 // Microsoft.EntityFrameworkCore.DbContextOptionsBuilder;
-builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IBlogRepository, EntityRepository>();
 builder.Services.AddDbContext<BloggingContext>(options =>
     options.UseNpgsql(

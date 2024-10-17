@@ -1,4 +1,6 @@
+namespace BlogAPI.Data;
+
 public interface IBlogRepository
 {
-    IEnumerable<Blog> GetAllBlogs();
+    IEnumerable<Post> GetAllPosts();
 }
