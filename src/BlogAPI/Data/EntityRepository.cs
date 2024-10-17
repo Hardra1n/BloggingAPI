@@ -2,7 +2,7 @@ namespace BlogAPI.Data;
 
 public class EntityRepository : IBlogRepository
 {
-    public BloggingContext _context;
+    private BloggingContext _context;
     public EntityRepository(BloggingContext context)
     {
         _context = context;
