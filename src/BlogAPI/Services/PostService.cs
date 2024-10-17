@@ -10,7 +10,11 @@ public class PostService : IPostService
         _blogRepository = blogRepository;
     }
 
-    public void AddPost(Post post) => _blogRepository.Create(post);
+    public void AddPost(Post post)
+    {
+        post.CreatedAt = DateTime.Now.ToUniversalTime();
+        _blogRepository.Create(post);
+    }
 
     public void DeletePost(int id) => _blogRepository.Delete(id);
 
@@ -18,5 +22,9 @@ public class PostService : IPostService
 
     public IEnumerable<Post> GetPosts() => _blogRepository.GetAllPosts();
 
-    public void UpdatePost(Post post) => _blogRepository.Update(post);
+    public void UpdatePost(Post post)
+    {
+        post.CreatedAt = GetPost(post.PostId).CreatedAt;
+        _blogRepository.Update(post);
+    }
 }

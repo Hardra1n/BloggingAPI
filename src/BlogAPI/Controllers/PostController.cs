@@ -1,3 +1,4 @@
+using BlogAPI.Dtos;
 using BlogAPI.Exceptions;
 using BlogAPI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -34,18 +35,18 @@ public class PostController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CreatePost(Post post)
+    public IActionResult CreatePost(PostCreateDto postDto)
     {
-        _postService.AddPost(post);
+        _postService.AddPost(postDto.ToPost());
         return Created(nameof(GetPostById), null);
     }
 
     [HttpPut]
-    public IActionResult UpdatePost(Post post)
+    public IActionResult UpdatePost(PostUpdateDto postDto)
     {
         try
         {
-            _postService.UpdatePost(post);
+            _postService.UpdatePost(postDto.ToPost());
             return Ok();
         }
         catch (NotFoundException<Post> ex)
