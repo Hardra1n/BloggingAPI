@@ -11,6 +11,8 @@ public class EntityRepository : IBlogRepository
         _context = context;
     }
 
+    public IQueryable<Post> Posts => _context.Posts.AsNoTracking();
+
     public void Create(Post post)
     {
         if (_context.Posts.Any((p) => p.PostId == post.PostId))
