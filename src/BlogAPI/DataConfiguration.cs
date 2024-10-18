@@ -16,11 +16,11 @@ public static class DataConfiguration
                 new Post() {
                     Title = "How strong people can be",
                     Content = "Depends on problems he is solving",
-                    CreatedAt=DateTime.Now.ToUniversalTime()},
+                    CreatedAt=DateTime.Now},
                 new Post() {
                     Title = "People do love pets",
                     Content = "The most common pets men own are wives.",
-                    CreatedAt=DateTime.Now.ToUniversalTime()},
+                    CreatedAt=DateTime.Now},
             ]);
             context.SaveChanges();
 

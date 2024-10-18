@@ -9,5 +9,13 @@ public class BloggingContext : DbContext
     {
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Post>()
+            .Property(p => p.CreatedAt)
+            .HasConversion<DateTimeConverter>();
+    }
+
     public DbSet<Post> Posts { get; set; }
 }

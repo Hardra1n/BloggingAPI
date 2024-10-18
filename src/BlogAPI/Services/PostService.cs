@@ -12,7 +12,7 @@ public class PostService : IPostService
 
     public void AddPost(Post post)
     {
-        post.CreatedAt = DateTime.Now.ToUniversalTime();
+        post.CreatedAt = DateTime.Now;
         _blogRepository.Create(post);
     }
 
