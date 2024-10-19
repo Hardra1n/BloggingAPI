@@ -14,7 +14,8 @@ public class BloggingContext : DbContext
         // base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Post>()
             .Property(p => p.CreatedAt)
-            .HasConversion<DateTimeConverter>();
+            .HasConversion<DateTimeConverter>()
+            .HasDefaultValueSql("now()");
     }
 
     public DbSet<Post> Posts { get; set; }

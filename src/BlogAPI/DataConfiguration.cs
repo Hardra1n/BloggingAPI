@@ -15,12 +15,10 @@ public static class DataConfiguration
             context.Posts.AddRange([
                 new Post() {
                     Title = "How strong people can be",
-                    Content = "Depends on problems he is solving",
-                    CreatedAt=DateTime.Now},
+                    Content = "Depends on problems he is solving"},
                 new Post() {
                     Title = "People do love pets",
-                    Content = "The most common pets men own are wives.",
-                    CreatedAt=DateTime.Now},
+                    Content = "The most common pets men own are wives."}
             ]);
             context.SaveChanges();
 
