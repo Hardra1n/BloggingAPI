@@ -1,9 +1,13 @@
+import PostList from "./PostList";
+import MainNavigation from "./MainNavigation";
+
 function App() {
   return (
     <>
-      <div>STARTING APP</div>
+      <MainNavigation />
+      <PostList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
